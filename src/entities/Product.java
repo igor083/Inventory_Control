@@ -37,6 +37,19 @@ public abstract class Product {
 
 
 
+	public Product(String name, Double price) {
+		this.name=name;
+		this.price=price;
+	}
+
+
+
+	public Product(String name) {
+		this.name=name;
+}
+
+
+
 	public abstract Double totalTypeValue(Integer quantity,Double price);
 
 
