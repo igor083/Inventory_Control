@@ -1,11 +1,13 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import exceptions.InventoryException;
+import typeProducts.TypeProduct;
 
 public class Inventory {
-	private List<Product> list;
+	private List<Product> list=new ArrayList<>();
 
 	public List<Product> getList() {
 		return list;
@@ -29,7 +31,7 @@ public class Inventory {
 	}
 
 	public Double totalValue() {// retorna todo o valor em estoque
-		if (list==null)	throw new InventoryException("O inventario ainda esta vazio!");
+		if (list==null)	throw new InventoryException("O estoque ainda esta vazio!");
 
 		Double ttl = 0.0;
 		for (Product x : list) {
@@ -38,15 +40,18 @@ public class Inventory {
 		return ttl;
 	}
 
-	public boolean addProduct( Product p, Integer quantity) {// Adiciona uma quantidade a um produto
+	public boolean addProduct( String name,TypeProduct type, Integer quantity) {// Adiciona uma quantidade a um produto
 																				// ja existente
-		if (list==null)	throw new InventoryException("O inventario ainda esta vazio!");
+		if (list==null)	throw new InventoryException("O estoque ainda esta vazio!");
 		for (Product product : list) {
-			if (!product.getName().equals(p.getName()) && product.getType().equals(p.getType())) {
+			if (!product.getName().equals(name) && product.getType().equals(type)) {
 				throw new InventoryException("O produto nao existe no estoque!");
 			}
+			if(product.getName().equals(name) && product.getType().equals(type)) {
+				product.setQuantity(quantity);;
+			}
 		}
-		list.add(p);
+		
 		return true;
 	}
 }

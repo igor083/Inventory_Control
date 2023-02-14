@@ -23,7 +23,7 @@ public class Food extends Product {
 	@Override
 	public Double totalTypeValue(Integer quantity, Double price) {
 
-		return null;
+		return quantity * price;
 	}
 
 	public Food(String name, Double price, Date expirationDate) {
@@ -31,17 +31,6 @@ public class Food extends Product {
 		type = TypeProduct.FOOD;
 		this.expirationDate = expirationDate;
 
-	}
-	public Food(String name, Date expirationDate) {
-		super(name);
-		type = TypeProduct.FOOD;
-		this.expirationDate = expirationDate;
-		
-	}
-
-	public Food(Date expirationDate) {
-		super();
-		this.expirationDate = expirationDate;
 	}
 
 	@Override
