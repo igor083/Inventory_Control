@@ -3,10 +3,10 @@ package entities;
 import typeProducts.TypeProduct;
 
 public abstract class Product {
-	public String name;
-	public Integer quantity;
-	public Double price;
-	public TypeProduct type;
+	private String name;
+	private Integer quantity;
+	private Double price;
+	private TypeProduct type;
 
 	
 	
@@ -38,4 +38,10 @@ public abstract class Product {
 
 
 	public abstract Double totalTypeValue(Integer quantity,Double price);
+
+
+
+	public TypeProduct getType() {
+		return type;
+	}
 }

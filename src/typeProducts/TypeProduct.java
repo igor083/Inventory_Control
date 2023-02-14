@@ -1,5 +1,5 @@
 package typeProducts;
 
 public enum TypeProduct {
-	FOOD;
+	FOOD,ELETRONICS;
 }

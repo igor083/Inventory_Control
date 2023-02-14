@@ -6,11 +6,19 @@ import java.util.Date;
 import entities.Product;
 
 public class Food extends Product {
-	public Date expirationDate;
+	private Date expirationDate;
+
+	public Date getExpirationDate() {
+		return expirationDate;
+	}
+
+	public TypeProduct getType() {
+		return type;
+	}
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");;
 
-	TypeProduct type = TypeProduct.FOOD;
+	private TypeProduct type = TypeProduct.FOOD;
 
 	@Override
 	public Double totalTypeValue(Integer quantity, Double price) {
@@ -28,8 +36,8 @@ public class Food extends Product {
 	@Override
 	public String toString() {
 		String strDate = sdf.format(expirationDate);
-		return String.format("Name: %s \n Quantity: %d \n Price: %.2f \n Type: %s", name, quantity, price, type,
-				strDate);
+		return String.format("Name: %s \n Quantity: %d \n Price: %.2f \n Type: %s", this.getName(), this.getQuantity(),
+				this.getPrice(), type, strDate);
 	}
 //	System.out.print("Data(DD/MM/YYYY): ");
 //	Date data = scHora.parse(sc.next());
