@@ -48,7 +48,7 @@ public class Inventory {
 				throw new InventoryException("O produto nao existe no estoque!");
 			}
 			if(product.getName().equals(name) && product.getType().equals(type)) {
-				product;
+				product.setQuantity(quantity+product.getQuantity());
 			}
 		}
 		
