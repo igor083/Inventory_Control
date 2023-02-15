@@ -7,7 +7,7 @@ import exceptions.InventoryException;
 import typeProducts.TypeProduct;
 
 public class Inventory {
-	private List<Product> list=new ArrayList<>();
+	private List<Product> list = new ArrayList<>();
 
 	public List<Product> getList() {
 		return list;
@@ -22,7 +22,7 @@ public class Inventory {
 
 	public boolean addNewProduct(Product p) {// Adiciona um novo produto
 		for (Product product : list) {
-			if (product.getName().equals(p.getName()) && product.getType().equals(p.getType())) { 
+			if (product.getName().equals(p.getName()) && product.getType().equals(p.getType())) {
 				throw new InventoryException("O produto ja existe no estoque!");
 			}
 		}
@@ -30,28 +30,30 @@ public class Inventory {
 		return true;
 	}
 
-	public Double totalValue() {// retorna todo o valor em estoque
-		if (list.size()==0)	throw new InventoryException("O estoque ainda esta vazio!");
+	public void totalValue() {// retorna todo o valor em estoque
+		if (list.size() == 0)
+			throw new InventoryException("O estoque ainda esta vazio!");
 
 		Double ttl = 0.0;
 		for (Product x : list) {
-			ttl += x.getPrice();
+			ttl += x.getPrice() * x.getQuantity();
 		}
-		return ttl;
+		System.out.println("A quantia em estoque e de :" + String.format("R$ %.2f", ttl));
+		;
 	}
 
-	public boolean addProduct( String name,TypeProduct type, Integer quantity) {// Adiciona uma quantidade a um produto
-																				// ja existente
-		if (list==null)	throw new InventoryException("O estoque ainda esta vazio!");
+	public boolean addProduct(String name, String type, Integer quantity) {// Adiciona uma quantidade a um produto
+																			// ja existente
+		if (list.size() == 0)
+			throw new InventoryException("O estoque ainda esta vazio!");
 		for (Product product : list) {
-			if (!product.getName().equals(name) && product.getType().equals(type)) {
-				throw new InventoryException("O produto nao existe no estoque!");
+			if (!product.getName().toUpperCase().equals(name.toUpperCase())
+					&& product.getType().toString().toUpperCase().charAt(0) == type.toUpperCase().charAt(0)) {
+				throw new InventoryException("O produto tnao exise no estoque!");
 			}
-			if(product.getName().equals(name) && product.getType().equals(type)) {
-				product.setQuantity(quantity+product.getQuantity());
-			}
+			product.setQuantity(quantity);
 		}
-		
+
 		return true;
 	}
 }

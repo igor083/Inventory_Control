@@ -1,12 +1,16 @@
 package application;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import entities.Inventory;
 import entities.Product;
 import exceptions.InventoryException;
+import typeProducts.Eletronics;
+import typeProducts.Food;
 import typeProducts.TypeProduct;
 
 public class UserInterface {
@@ -47,15 +51,15 @@ public class UserInterface {
 					sc.nextLine();
 					System.out.print("Tipo do produto: ");
 					String typeStr = sc.nextLine();
-					TypeProduct typep = TypeProduct.valueOf(typeStr);
 					System.out.print("Quantos produtos deseja adicionar: ");
 					Integer quant = sc.nextInt();
-					inventory.addProduct(namep, typep, quant);
+					inventory.addProduct(namep, typeStr, quant);
+					System.out.println(typeStr);
 				}
 				throw new InventoryException("Estoque vazio!");
 
 			case 4:
-				Product prod = Program.newObj();
+				Product prod = newObj();
 				inventory.addNewProduct(prod);
 				return 1;
 
@@ -80,6 +84,35 @@ public class UserInterface {
 			;
 		}
 		return 1;
+	}
+	
+	public static Product newObj() throws ParseException {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Digite o tipo do produto: (FOOD , ELETRONIC)");
+		String type = sc.nextLine();
+
+		System.out.print("Nome do produto: ");
+		String name = sc.nextLine();
+
+		System.out.print("Preco do produto: ");
+		Double price = sc.nextDouble();
+
+		System.out.print("Quantidade do produto a ser adicionado: ");
+		Integer quantity = sc.nextInt();
+
+		if (type.toUpperCase().charAt(0) == 'F') {
+			sc.nextLine();
+			System.out.print("Data de validade: ");
+			String strDate = sc.nextLine();
+			Date date = new SimpleDateFormat("dd/MM/yyyy").parse(strDate);
+			Product food = new Food(name, quantity, price, date);
+			return food;
+		} else if (type.toUpperCase().charAt(0) == 'E') {
+			Product eletronic = new Eletronics(name, quantity, price);
+			return eletronic;
+		}
+
+		return null;
 	}
 
 

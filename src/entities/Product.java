@@ -43,7 +43,7 @@ public abstract class Product {
 	}
 
 	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+		this.quantity += quantity;
 	}
 
 	public Double getPrice() {
