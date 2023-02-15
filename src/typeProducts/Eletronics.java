@@ -22,6 +22,12 @@ public class Eletronics extends Product {
 
 	}
 
+	
+
+	public Eletronics(String name, Integer quantity, Double price) {
+		super(name, quantity, price);
+	}
+
 	@Override
 	public String toString() {
 		return String.format("Name: %s \n Quantity: %d \n Price: %.2f \n Type: %s", this.getName(), this.getQuantity(),

@@ -26,8 +26,8 @@ public class Food extends Product {
 		return quantity * price;
 	}
 
-	public Food(String name, Double price, Date expirationDate) {
-		super(name, price);
+	public Food(String name,Integer quantity,Double price, Date expirationDate) {
+		super(name,quantity, price);
 		type = TypeProduct.FOOD;
 		this.expirationDate = expirationDate;
 
@@ -36,7 +36,7 @@ public class Food extends Product {
 	@Override
 	public String toString() {
 		String strDate = sdf.format(expirationDate);
-		return String.format("Name: %s \n Quantity: %d \n Price: %.2f \n Type: %s", this.getName(), this.getQuantity(),
+		return String.format(" Name: %s Quantity: %d Price: %.2f Type: %s", this.getName(), this.getQuantity(),
 				this.getPrice(), type, strDate);
 	}
 //	System.out.print("Data(DD/MM/YYYY): ");

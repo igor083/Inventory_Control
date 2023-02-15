@@ -22,7 +22,7 @@ public class Inventory {
 
 	public boolean addNewProduct(Product p) {// Adiciona um novo produto
 		for (Product product : list) {
-			if (product.getName().equals(p.getName()) && product.getType().equals(p.getType())) {
+			if (product.getName().equals(p.getName()) && product.getType().equals(p.getType())) { 
 				throw new InventoryException("O produto ja existe no estoque!");
 			}
 		}
@@ -31,7 +31,7 @@ public class Inventory {
 	}
 
 	public Double totalValue() {// retorna todo o valor em estoque
-		if (list==null)	throw new InventoryException("O estoque ainda esta vazio!");
+		if (list.size()==0)	throw new InventoryException("O estoque ainda esta vazio!");
 
 		Double ttl = 0.0;
 		for (Product x : list) {
@@ -48,7 +48,7 @@ public class Inventory {
 				throw new InventoryException("O produto nao existe no estoque!");
 			}
 			if(product.getName().equals(name) && product.getType().equals(type)) {
-				product.setQuantity(quantity);;
+				product;
 			}
 		}
 		

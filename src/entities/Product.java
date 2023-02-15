@@ -14,7 +14,7 @@ public abstract class Product {
 
 	public Product(String name, Integer quantity, Double price) {
 		this.name = name;
-		this.quantity = 0;
+		this.quantity = quantity;
 		this.price = price;
 
 	}
@@ -43,7 +43,7 @@ public abstract class Product {
 	}
 
 	public void setQuantity(Integer quantity) {
-		this.quantity += quantity;
+		this.quantity = quantity;
 	}
 
 	public Double getPrice() {
